@@ -155,5 +155,43 @@ namespace EmpleadosEscritorio
                 }
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (consultado == false)
+            {
+                MessageBox.Show("Debe consultar primero");
+            }
+            else if (txtDocument.Text.Trim() == "")
+            {
+                MessageBox.Show("Debe ingresar un documento valido");
+            }
+            else if (DialogResult.No==MessageBox.Show(null,"confirmas","para confirmar",MessageBoxButtons.YesNo))
+            {
+               
+            }
+            else
+            {
+                try
+                {
+                    
+                    if (EmpleadoCAD.eliminar(txtDocument.Text.Trim()))
+                    {
+                        llenarGrid();
+                        limpiarDatos();
+                        MessageBox.Show("Empleado eliminado");
+                    }
+                    else
+                    {
+                        MessageBox.Show("no se eliminó");
+                    }
+                }
+                catch (Exception exep)
+                {
+
+                    MessageBox.Show(exep.Message);
+                }
+            }
+        }
     }
 }

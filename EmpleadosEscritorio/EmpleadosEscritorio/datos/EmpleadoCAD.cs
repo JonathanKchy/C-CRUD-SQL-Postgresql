@@ -67,6 +67,35 @@ namespace EmpleadosEscritorio.datos
             }
         }
 
+
+        public static bool eliminar(string documento)
+        {
+            try
+            {
+                Conexion con = new Conexion();
+                string sql = "delete from tb_empleado where documento='"+documento+"'";
+                SqlCommand comando = new SqlCommand(sql, con.Conectar());
+                int cantidad = comando.ExecuteNonQuery();
+                if (cantidad == 1)
+                {
+                    con.Desconectar();
+                    return true;
+                }
+                else
+                {
+                    con.Desconectar();
+                    return false;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+        }
+
         public static DataTable listar()
         {
             try
