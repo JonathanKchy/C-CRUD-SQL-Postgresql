@@ -44,8 +44,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dtgLista = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgLista)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -164,6 +164,7 @@
             this.button2.TabIndex = 13;
             this.button2.Text = "CONSULTAR";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -183,22 +184,22 @@
             this.button4.Text = "ELIMINAR";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dtgLista
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(345, 39);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(443, 225);
-            this.dataGridView1.TabIndex = 16;
+            this.dtgLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgLista.Location = new System.Drawing.Point(345, 39);
+            this.dtgLista.Name = "dtgLista";
+            this.dtgLista.RowHeadersWidth = 62;
+            this.dtgLista.RowTemplate.Height = 33;
+            this.dtgLista.Size = new System.Drawing.Size(443, 225);
+            this.dtgLista.TabIndex = 16;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dtgLista);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -218,7 +219,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgLista)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,6 +243,6 @@
         private Button button2;
         private Button button3;
         private Button button4;
-        private DataGridView dataGridView1;
+        private DataGridView dtgLista;
     }
 }
