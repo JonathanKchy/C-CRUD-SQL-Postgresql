@@ -20,6 +20,7 @@ namespace EmpleadosEscritorio
         {
             llenarGrid();
         }
+        bool consultado=false;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -94,6 +95,7 @@ namespace EmpleadosEscritorio
                 if (em == null)
                 {
                     MessageBox.Show("No existe el empleado: "+txtDocument.Text);
+                    consultado = false;
                 }
                 else
                 {
@@ -103,6 +105,53 @@ namespace EmpleadosEscritorio
                     txtEdad.Text = em.Edad.ToString();
                     txtNombre.Text = em.Nombres;
                     dtFecha.Text = em.Fecha_naciemiento;
+                    consultado = true;
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            if (consultado==false)
+            {
+                MessageBox.Show("Debe consultar primero");
+            }
+            else if(txtDocument.Text.Trim() == "")
+            {
+                MessageBox.Show("Debe ingresar un documento valido");
+            }
+            else if (txtNombre.Text.Trim().Length < 5)
+            {
+                MessageBox.Show("Debe ingresar un nombre m'as largo");
+            }
+            else
+            {
+                try
+                {
+                    Empleado em = new Empleado();
+                    em.Document = txtDocument.Text.Trim();
+                    em.Nombres = txtNombre.Text.Trim();
+                    em.Apellidos = txtApellido.Text.Trim();
+                    em.Direccion = txtDireccion.Text.Trim();
+                    em.Edad = Convert.ToInt32(txtEdad.Text.Trim());
+                    em.Fecha_naciemiento = dtFecha.Value.Year + "-" + dtFecha.Value.Month + "-" + dtFecha.Value.Day;
+
+                    if (EmpleadoCAD.actualizar(em))
+                    {
+                        llenarGrid();
+                        limpiarDatos();
+                        MessageBox.Show("Empleado actualizado");
+                    }
+                    else
+                    {
+                        MessageBox.Show("no se actualizó");
+                    }
+                }
+                catch (Exception exep)
+                {
+
+                    MessageBox.Show(exep.Message);
                 }
             }
         }

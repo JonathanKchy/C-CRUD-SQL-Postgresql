@@ -39,6 +39,34 @@ namespace EmpleadosEscritorio.datos
             }
         }
 
+        public static bool actualizar(Empleado e)
+        {
+            try
+            {
+                Conexion con = new Conexion();
+                string sql = "update tb_empleado set nombres='"+ e.Nombres+"',apellidos='" + e.Apellidos + "',edad=" + e.Edad + ",direccion='" + e.Direccion + "',fecha_naciemiento='" + e.Fecha_naciemiento + "' where documento='"+e.Document+"'";
+                SqlCommand comando = new SqlCommand(sql, con.Conectar());
+                int cantidad = comando.ExecuteNonQuery();
+                if (cantidad == 1)
+                {
+                    con.Desconectar();
+                    return true;
+                }
+                else
+                {
+                    con.Desconectar();
+                    return false;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+        }
+
         public static DataTable listar()
         {
             try
